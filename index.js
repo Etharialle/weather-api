@@ -1,10 +1,12 @@
-const fetchButton = document.querySelector("#fetch");
-fetchButton.addEventListener("click", () => {
+const fetchButton = document.querySelector("#submit");
+fetchButton.addEventListener("click", (e) => {
     if (!localStorage.apiKey) {
         alert("Please Add API Key");
         return
     }
-    console.log(JSON.parse(localStorage.apiKey));
+    const city = document.querySelector("#city").value;
+    getWeather(city);
+    e.preventDefault();
 });
 
 const mainTag = document.querySelector("main");
@@ -18,3 +20,15 @@ apiKeyButton.addEventListener("click", () => {
 });
 mainTag.appendChild(apiKeyButton);
 
+async function getWeather(city) {
+    const apiKey = JSON.parse(localStorage.apiKey);
+    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+    console.log(apiUrl);
+    try {
+        const response = await fetch(apiUrl, {mode: 'cors'});
+        const weather = await response.json();
+        console.log(weather);
+    } catch (error) {
+        console.error(`API Error: ${error.message}`);
+    }
+}
