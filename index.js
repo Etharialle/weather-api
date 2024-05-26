@@ -1,11 +1,15 @@
 const fetchButton = document.querySelector("#submit");
-fetchButton.addEventListener("click", (e) => {
+fetchButton.addEventListener("click", async (e) => {
     if (!localStorage.apiKey) {
         alert("Please Add API Key");
         return
     }
     const city = document.querySelector("#city").value;
-    getWeather(city);
+    const currentWeather = await getWeather(city);
+    console.log(currentWeather.current.condition.text);
+    if (currentWeather.current.condition.text === "Sunny") {
+        createSnow();
+    }
     e.preventDefault();
 });
 
@@ -23,17 +27,23 @@ mainTag.appendChild(apiKeyButton);
 async function getWeather(city) {
     const apiKey = JSON.parse(localStorage.apiKey);
     const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+    let currentWeather;
     console.log(apiUrl);
     try {
         const response = await fetch(apiUrl, {mode: 'cors'});
         const weather = await response.json();
+        currentWeather = weather;
         console.log(weather);
+        
     } catch (error) {
         console.error(`API Error: ${error.message}`);
     }
+    return currentWeather;
 }
 
-// createSnow();
+
+
+//createSnow();
 function createSnow() {
     const numberOfSnowflakes = 300;
     const maxSnowflaskeSize = 5;
