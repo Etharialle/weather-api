@@ -85,3 +85,16 @@ input:focus {
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
 }
+.weather {
+    display: flex;
+
+    justify-content: space-between;
+
+}
+.response {
+    width: 100%;
+}
+.current {
+    font-size: 2rem;
+    font-weight: 800;
+}
