@@ -14,3 +14,9 @@
 
 ## Formatting based on current weather (temperature, condition, wind)
 Possibly use images and/or colors
+
+## Key Requirements
+ - [ ] functions to process the JSON return
+ - [ ] Form for users to input location
+ - [ ] Change the look of the page based on weather
+ - [ ] 

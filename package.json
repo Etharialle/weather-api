@@ -4,10 +4,11 @@
   "description": "Access weather data with just a few clicks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "Etharialle",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^7.1.2",
