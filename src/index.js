@@ -1,6 +1,7 @@
 import "./style.css";
 import html from "./index.html";
 import { getWeather } from "./api.js";
+import { createApiKeyButton } from "./dom.js";
 
 const enterKey = document.querySelector("#location");
 enterKey.addEventListener("keypress", (e) =>{
@@ -19,19 +20,6 @@ fetchButton.addEventListener("click", async (e) => {
     console.log(currentWeather.current.condition.text);
 });
 
-const mainTag = document.querySelector(".main");
-//if (!localStorage.apiKey) {}
-const apiKeyButton = document.createElement("button");
-apiKeyButton.textContent = "Add API Key";
-apiKeyButton.id = "api-key-button";
-apiKeyButton.addEventListener("click", () => {
-    const apiKey = prompt("Enter API Key:");
-    localStorage.apiKey = JSON.stringify(apiKey);
-});
-mainTag.appendChild(apiKeyButton);
 
-function createApiKeyButton {
-    console.log("stuff");
-}
+
 createApiKeyButton();
-
