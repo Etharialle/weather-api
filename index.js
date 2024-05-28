@@ -1,4 +1,8 @@
-const fetchButton = document.querySelector("#submit");
+const enterKey = document.querySelector("#city");
+enterKey.addEventListener("keypress", (e) =>{
+    console.log("enter key pressed");
+});
+const fetchButton = document.querySelector("#fetch");
 fetchButton.addEventListener("click", async (e) => {
     if (!localStorage.apiKey) {
         alert("Please Add API Key");
@@ -13,7 +17,7 @@ fetchButton.addEventListener("click", async (e) => {
     e.preventDefault();
 });
 
-const mainTag = document.querySelector("main");
+const mainTag = document.querySelector(".main");
 //if (!localStorage.apiKey) {}
 const apiKeyButton = document.createElement("button");
 apiKeyButton.textContent = "Add API Key";
